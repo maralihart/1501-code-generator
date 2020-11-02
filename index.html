@@ -10,45 +10,90 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
+    <style>
+      body {
+        margin: 30px;
+      }
+
+      .submit {
+        margin-top: 20px;
+      }
+
+      p {
+        margin: 5px;
+      }
+
+      div {
+        margin: 20px 0px;
+      }
+    </style>
   </head>
   <body>
     
-    <form>
+    <form id="generator">
       <p>For example, Alex Preston Johnson is the 2nd of two children, born on November 20 to parents John and Emily in Richmond.  Alex lives at 937 Elm St.  Alex’s code is EJNR92112</p>
 
-      <p>First letter of your mother’s first name (or your primary female caregiver’s when you were young).  Use “e” if this does not apply to you.</p>
-      <p>Alex's mom's name is "Emily", so he would put in E</p>
-      <input type="text" id="mom" name="mom">
+      <div>
+        <p>First letter of your mother’s first name (or your primary female caregiver’s when you were young).  Use “e” if this does not apply to you.</p>
+        <p>Alex's mom's name is "Emily", so he would put in E</p>
+        <input type="text" id="mom" name="mom" placeholder="Mother's First Name">
+      </div>
+      <div>
+        <p>First letter of your father’s first name (or your primary male caregiver’s when you were young).  Use “e” if this does not apply to you.</p>
+        <p>Alex's dad's name is "John", so he would put in J</p>
+        <input type="text" id="dad" name="dad" placeholder="Father's First Name">
+      </div>
+      <div>
+        <p>Last letter of your middle name. Use “e” if this does not apply to you.</p>
+        <p>Alex's middle name is "Preston", so he would put in N</p>
+        <input type="text" id="mid" name="mid" placeholder="Middle Name">
+      </div>
+      <div>
+        <p>First letter of the city where you were born.  (Or identifying location that makes sense to you if it was not a city.)</p>
+        <p>Alex was born in Richmond, so he would put in R</p>
+        <input type="text" id="city" name="city" placeholder="City You Were Born">
+        </div>
+      <div>
+        <p>The first letter or number of the street address of the primary postal mailing address that you were using when you first took this survey.</p>
+        <p>Alex lives at 937 Elm. St. so he would put in 9</p>
+        <input type="text" id="street" name="street" placeholder="Street You Live On">
+      </div>
+      <div>
+        <p>A number reflecting your “place” in the order of births in your family. If you were the first, child born, choose 1.  If you have one older sibling and are a twin, then choose 2 if you were born before your twin and 3 if you arrived after.  If this value is complicated in any way for you, choose 1.</p>
+        <p>Alex was the second-born, i.e. has an older sibling, so he would put down 2</p>
+        <input type="text" id="birth" name="birth" placeholder="Birth Order">
+      </div>
+      <div>
+        <p>Take the digits for your birthday’s month and day.  Sort them into ascending order, and use that number. Do not include any zeros.</p>
+        <p>Alex was born on November 20 or 11/20. 11 comes before 20, so we have 1120, but then we take out any zeroes, so he would put down 112</p>
+        <input type="text" id="monthday" name="monthday" placeholder="Birthday">
+      </div>
 
-      <p>First letter of your father’s first name (or your primary male caregiver’s when you were young).  Use “e” if this does not apply to you.</p>
-      <p>Alex's dad's name is "John", so he would put in J</p>
-      <input type="text" id="dad" name="dad">
-
-      <p>Last letter of your middle name. Use “e” if this does not apply to you.</p>
-      <p>Alex's middle name is "Preston", so he would put in N</p>
-      <input type="text" id="mid" name="mid">
-
-      <p>First letter of the city where you were born.  (Or identifying location that makes sense to you if it was not a city.)</p>
-      <p>Alex was born in Richmond, so he would put in R</p>
-      <input type="text" id="city" name="city">
+      <input type="submit" class="submit" id="submit">
       
-      <p>The first letter or number of the street address of the primary postal mailing address that you were using when you first took this survey.</p>
-      <p>Alex lives at 937 Elm. St. so he would put in 9</p>
-      <input type="text" id="street" name="street">
-      
-      <p>A number reflecting your “place” in the order of births in your family. If you were the first, child born, choose 1.  If you have one older sibling and are a twin, then choose 2 if you were born before your twin and 3 if you arrived after.  If this value is complicated in any way for you, choose 1.</p>
-      <p>Alex was the second-born, i.e. has an older sibling, so he would put down 2</p>
-      <input type="text" id="birth" name="birth">
-      
-      <p>Take the digits for your birthday’s month and day.  Sort them into ascending order, and use that number. Do not include any zeros.</p>
-      <p>Alex was born on November 20 or 11/20. 11 comes before 20, so we have 1120, but then we take out any zeroes, so he would put down 112</p>
-      <input type="text" id="monthday" name="monthday">
-    
-      <p>Your code is:</p>
-      <strong><p id="code"></p></strong>
     </form>
-    
-    <script src="" async defer></script>
+
+    <p>Your code is:</p>
+    <strong><p id="code"></p></strong>
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+      $("#generator").submit(function(e){
+        e.preventDefault();
+
+        var mom = $("#mom").val();
+        var dad = $("#dad").val();
+        var mid = $("#mid").val();
+        var city = $("#city").val();
+        var street = $("#street").val();
+        var birth = $("#birth").val();
+        var monthday = $("#monthday").val();
+
+        var codeSpace = $("#code");
+          
+        code = mom + dad + mid + city + street + birth + monthday;
+        codeSpace.text(code);
+      });
+    </script>
   </body>
 </html>
