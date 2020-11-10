@@ -34,39 +34,92 @@
       <p>For example, Alex Preston Johnson is the 2nd of two children, born on December 1 to parents John and Emily in Richmond.  Alex lives at 937 Elm St.  Alex’s code is EJNR92112</p>
 
       <div>
-        <p>First letter of your mother’s first name (or your primary female caregiver’s when you were young).  Use “e” if this does not apply to you.</p>
-        <p>Alex's mom's name is "Emily", so he would put in E</p>
+        <p>Your mother’s first name (or your primary female caregiver’s when you were young).  Use “e” if this does not apply to you.</p>
+        <p>Alex's mom's name is <strong>Emily</strong></p>
         <input type="text" id="mom" name="mom" placeholder="Mother's First Name">
       </div>
       <div>
-        <p>First letter of your father’s first name (or your primary male caregiver’s when you were young).  Use “e” if this does not apply to you.</p>
-        <p>Alex's dad's name is "John", so he would put in J</p>
+        <p>Yur father’s first name (or your primary male caregiver’s when you were young).  Use “e” if this does not apply to you.</p>
+        <p>Alex's dad's name is <strong>John</strong></p>
         <input type="text" id="dad" name="dad" placeholder="Father's First Name">
       </div>
       <div>
-        <p>Last letter of your middle name. Use “e” if this does not apply to you.</p>
-        <p>Alex's middle name is "Preston", so he would put in N</p>
+        <p>Your middle name. Use “e” if this does not apply to you.</p>
+        <p>Alex's middle name is <strong>Preston</strong></p>
         <input type="text" id="mid" name="mid" placeholder="Middle Name">
       </div>
       <div>
-        <p>First letter of the city where you were born.  (Or identifying location that makes sense to you if it was not a city.)</p>
-        <p>Alex was born in Richmond, so he would put in R</p>
+        <p>The city where you were born.  (Or identifying location that makes sense to you if it was not a city.)</p>
+        <p>Alex was born in <strong>Richmond</strong></p>
         <input type="text" id="city" name="city" placeholder="City You Were Born">
         </div>
       <div>
-        <p>The first letter or number of the street address of the primary postal mailing address that you were using when you first took this survey.</p>
-        <p>Alex lives at 937 Elm. St. so he would put in 9</p>
+        <p>The street address of the primary postal mailing address that you were using when you first took this survey.</p>
+        <p>Alex lives at <strong>937 Elm. St.</strong></p>
         <input type="text" id="street" name="street" placeholder="Street You Live On">
       </div>
       <div>
-        <p>A number reflecting your “place” in the order of births in your family. If you were the first, child born, choose 1.  If you have one older sibling and are a twin, then choose 2 if you were born before your twin and 3 if you arrived after.  If this value is complicated in any way for you, choose 1.</p>
-        <p>Alex was the second-born, i.e. has an older sibling, so he would put down 2</p>
-        <input type="text" id="birth" name="birth" placeholder="Birth Order">
+        <p>A number reflecting your “place” in the order of births in your family. If this value is complicated in any way for you, choose first-born.</p>
+        <p>Alex was the <strong>second-born</strong></p>
+        <select id="birth" name="birth">
+          <option value="1" default>first-born/only child</option>
+          <option value="2" >second-born</option>
+          <option value="3" >third-born</option>
+          <option value="4" >fourth-born</option>
+          <option value="5" >fifth-born</option>
+          <option value="6" >sixth-born or later</option>
+        </select>
       </div>
       <div>
-        <p>Take the digits for your birthday’s month and day.  Sort them into ascending order, and use that number. Do not include any zeros.</p>
-        <p>Alex was born on December 1 or 12/01. We have the numbers 1, 2, 0, 1. We'll take out any zeros and have 1, 2, 1, which sorted is 112, so he would put down 112</p>
-        <input type="text" id="monthday" name="monthday" placeholder="Birthday">
+        <p>When is your birthday?</p>
+        <p>Alex was born <strong>December 1</strong></p>
+        <select id="month" name="month">
+          <option value="1" >January</option>
+          <option value="2" >February</option>
+          <option value="3" >March</option>
+          <option value="4" >April</option>
+          <option value="5" >May</option>
+          <option value="6" >June</option>
+          <option value="7" >July</option>
+          <option value="8" >August</option>
+          <option value="9" >September</option>
+          <option value="10" >October</option>
+          <option value="11" >November</option>
+          <option value="12" >December</option>
+        </select>
+        <select id="day" name="day">
+          <option value="1" >1</option>
+          <option value="2" >2</option>
+          <option value="3" >3</option>
+          <option value="4" >4</option>
+          <option value="5" >5</option>
+          <option value="6" >6</option>
+          <option value="7" >7</option>
+          <option value="8" >8</option>
+          <option value="9" >9</option>
+          <option value="10" >10</option>
+          <option value="11" >11</option>
+          <option value="12" >12</option>
+          <option value="13" >13</option>
+          <option value="14" >14</option>
+          <option value="15" >15</option>
+          <option value="16" >16</option>
+          <option value="17" >17</option>
+          <option value="18" >18</option>
+          <option value="19" >19</option>
+          <option value="20" >20</option>
+          <option value="21" >21</option>
+          <option value="22" >22</option>
+          <option value="23" >23</option>
+          <option value="24" >24</option>
+          <option value="25" >25</option>
+          <option value="26" >26</option>
+          <option value="27" >27</option>
+          <option value="28" >28</option>
+          <option value="29" >29</option>
+          <option value="30" >30</option>
+          <option value="31" >31</option>
+        </select>
       </div>
 
       <input type="submit" class="submit" id="submit">
@@ -81,18 +134,25 @@
       $("#generator").submit(function(e){
         e.preventDefault();
 
-        var mom = $("#mom").val();
-        var dad = $("#dad").val();
-        var mid = $("#mid").val();
-        var city = $("#city").val();
-        var street = $("#street").val();
+        var mom = $("#mom").val().slice(0,1);
+        var dad = $("#dad").val().slice(0,1);
+        var mid = $("#mid").val().slice(-1);
+        var city = $("#city").val().slice(0,1);
+        var street = $("#street").val().slice(0,1);
         var birth = $("#birth").val();
-        var monthday = $("#monthday").val();
+        var month = $("#month").val();
+        var day = $("#day").val();
+
+        var monthDayListed = (month + day).split("").sort().toString()
+        while(monthDayListed.includes(',') || monthDayListed.includes('0')) {
+          monthDayListed = monthDayListed.replace(',','')
+          monthDayListed = monthDayListed.replace('0','')
+        }
 
         var codeSpace = $("#code");
           
-        code = mom + dad + mid + city + street + birth + monthday;
-        codeSpace.text(code);
+        code = mom + dad + mid + city + street + birth + monthDayListed;
+        codeSpace.text(code.toUpperCase());
       });
     </script>
   </body>
