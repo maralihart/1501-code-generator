@@ -142,12 +142,17 @@
         var birth = $("#birth").val();
         var month = $("#month").val();
         var day = $("#day").val();
-        console.log(month, day)
+
+        var monthDayListed = (month + day).split("").sort().toString()
+        while(monthDayListed.includes(',') || monthDayListed.includes('0')) {
+          monthDayListed = monthDayListed.replace(',','')
+          monthDayListed = monthDayListed.replace('0','')
+        }
 
         var codeSpace = $("#code");
           
-        code = mom + dad + mid + city + street + birth + month + day;
-        codeSpace.text(code);
+        code = mom + dad + mid + city + street + birth + monthDayListed;
+        codeSpace.text(code.toUpperCase());
       });
     </script>
   </body>
