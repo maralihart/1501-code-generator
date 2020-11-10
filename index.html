@@ -81,9 +81,9 @@
       $("#generator").submit(function(e){
         e.preventDefault();
 
-        var mom = $("#mom").val();
-        var dad = $("#dad").val();
-        var mid = $("#mid").val();
+        var mom = $("#mom").val().slice(0,1);
+        var dad = $("#dad").val().slice(0,1);
+        var mid = $("#mid").val().slice(-1);
         var city = $("#city").val();
         var street = $("#street").val();
         var birth = $("#birth").val();
